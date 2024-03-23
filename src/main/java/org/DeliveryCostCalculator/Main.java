@@ -2,10 +2,6 @@ package org.DeliveryCostCalculator;
 
 public class Main {
     public static void main(String[] args) {
-        int distance = 1;
-        boolean isBigSize = false;
-        boolean isFragile = false;
-        double loadFactor = 1.5;
 
         class DeliveryCostCalculator {
 
@@ -41,7 +37,5 @@ public class Main {
                 return totalCost;
             }
         }
-        int deliveryCost = DeliveryCostCalculator.calculateDeliveryCost(distance, isBigSize, isFragile, loadFactor);
-        System.out.println("Стоимость доставки: " + deliveryCost + " рублей");
     }
 }
