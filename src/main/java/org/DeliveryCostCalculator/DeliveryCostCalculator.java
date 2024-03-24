@@ -19,9 +19,11 @@ public class DeliveryCostCalculator {
         } else {
             baseCost += 100;
         }
-
-        if (isFragile && distance > 30) {
+        if (isFragile) {
             baseCost += 300;
+        }
+        if (isFragile && distance > 30) {
+            return -1; // Fragile cargo can't be delivered over 30 km
         }
 
         int totalCost = (int) (baseCost * loadFactor);
