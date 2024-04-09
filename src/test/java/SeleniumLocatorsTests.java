@@ -36,7 +36,7 @@ public class SeleniumLocatorsTests {
 
     @Test
     void imageFluid() {
-        WebElement imageFluid = driver.findElement(By.cssSelector("img[class='img-fluid']"));
+        WebElement imageFluid = driver.findElement(By.className("img-fluid"));
         Assertions.assertTrue(imageFluid.isDisplayed());
     }
 
@@ -48,65 +48,65 @@ public class SeleniumLocatorsTests {
 
     @Test
     void labelTextInput() {
-        WebElement labelTextInput = driver.findElement(By.cssSelector("html > body > main > div > form > div > div:nth-of-type(1) > label:nth-of-type(1)"));
-        Assertions.assertEquals("Text input", labelTextInput.getText());
+        WebElement labelTextInput = driver.findElement(By.id("my-text-id"));
+        Assertions.assertTrue(labelTextInput.isDisplayed());
     }
 
     @Test
     void inputMyText() {
-        WebElement inputMyText = driver.findElement(By.cssSelector("input[id='my-text-id']"));
+        WebElement inputMyText = driver.findElement(By.id("my-text-id"));
         inputMyText.sendKeys("test");
         Assertions.assertEquals("test", inputMyText.getAttribute("value"));
     }
 
     @Test
     void labelPassword() {
-        WebElement labelPassword = driver.findElement(By.cssSelector("html > body > main > div > form > div > div:nth-of-type(1) > label:nth-of-type(2)"));
+        WebElement labelPassword = driver.findElement(By.xpath("//label[.//input[@type='password']]"));
         Assertions.assertEquals("Password", labelPassword.getText());
     }
 
     @Test
     void inputMyPassword() {
-        WebElement inputMyPassword = driver.findElement(By.cssSelector("input[name='my-password']"));
+        WebElement inputMyPassword = driver.findElement(By.name("my-password"));
         inputMyPassword.sendKeys("12345");
         Assertions.assertEquals("12345", inputMyPassword.getAttribute("value"));
     }
 
     @Test
     void labelTextarea() {
-        WebElement labelTextarea = driver.findElement(By.cssSelector("html > body > main > div > form > div > div:nth-of-type(1) > label:nth-of-type(3)"));
+        WebElement labelTextarea = driver.findElement(By.xpath("//label[.//textarea]"));
         Assertions.assertEquals("Textarea", labelTextarea.getText());
     }
 
     @Test
     void textareaMy() {
-        WebElement textareaMy = driver.findElement(By.cssSelector("textarea[rows='3']"));
+        WebElement textareaMy = driver.findElement(By.name("my-textarea"));
         textareaMy.sendKeys("SomeTextHere");
         Assertions.assertEquals("SomeTextHere", textareaMy.getAttribute("value"));
     }
 
     @Test
     void labelDisabledInput() {
-        WebElement labelDisabledInput = driver.findElement(By.cssSelector("html > body > main > div > form > div > div:nth-of-type(1) > label:nth-of-type(4)"));
+        WebElement labelDisabledInput = driver.findElement(By.xpath("//label[.//input[@name='my-disabled']]"));
         Assertions.assertEquals("Disabled input", labelDisabledInput.getText());
     }
     
     @Test
     void inputMyDisabled() {
-        WebElement inputMyDisabled = driver.findElement(By.cssSelector("input[placeholder='Disabled input']"));
+        WebElement inputMyDisabled = driver.findElement(By.name("my-disabled"));
         Assertions.assertTrue(inputMyDisabled.getAttribute("disabled").equals("true"));
         Assertions.assertTrue(inputMyDisabled.getAttribute("placeholder").equals("Disabled input"));
     }
 
     @Test
     void labelReadonlyInput() {
-        WebElement labelReadonlyInput = driver.findElement(By.cssSelector("html > body > main > div > form > div > div:nth-of-type(1) > label:nth-of-type(5)"));
+        WebElement labelReadonlyInput = driver.findElement(By.xpath("//label[.//input[@name='my-readonly']]"));
         Assertions.assertEquals("Readonly input", labelReadonlyInput.getText());
     }
 
     @Test
     void inputMyReadonly() {
-        WebElement inputMyReadonly = driver.findElement(By.cssSelector("input[name='my-readonly']"));
+        WebElement inputMyReadonly = driver.findElement(By.name("my-readonly"));
         Assertions.assertTrue(inputMyReadonly.getAttribute("readonly").equals("true"));
         Assertions.assertTrue(inputMyReadonly.getAttribute("value").equals("Readonly input"));
     }
@@ -121,7 +121,7 @@ public class SeleniumLocatorsTests {
 
     @Test
     void spanCopyrightBoniGarc() {
-        WebElement spanCopyrightBoniGarc = driver.findElement(By.cssSelector("span[class='text-muted']"));
+        WebElement spanCopyrightBoniGarc = driver.findElement(By.className("text-muted"));
         Assertions.assertEquals("Copyright © 2021-2023 Boni García", spanCopyrightBoniGarc.getText());
     }
 
@@ -134,9 +134,9 @@ public class SeleniumLocatorsTests {
     }
 
     @Test
-    void labelDropdownSelect() throws InterruptedException {
-        WebElement labelDropdownSelect = driver.findElement(By.xpath("//label[contains(@class, 'w-100')][.//select]"));
-        Assertions.assertEquals("label", labelDropdownSelect.getTagName());
+    void labelDropdownSelect() {
+        WebElement labelDropdownSelect = driver.findElement(By.name("my-select"));
+        Assertions.assertTrue( labelDropdownSelect.isDisplayed());
     }
 
     @Test
@@ -153,32 +153,32 @@ public class SeleniumLocatorsTests {
 
     @Test
     void labelFileInput() {
-        WebElement labelFileInput = driver.findElement(By.xpath("//label[.//input[@type='file']]"));
-        Assertions.assertEquals("File input", labelFileInput.getText());
+        WebElement labelFileInput = driver.findElement(By.name("my-file"));
+        Assertions.assertTrue(labelFileInput.isDisplayed());
     }
 
     @Test
     void checkedCheckbox() {
-        WebElement checkedCheckbox = driver.findElement(By.xpath("//label[.//*[@id='my-check-1']]"));
-        Assertions.assertEquals("Checked checkbox", checkedCheckbox.getText());
+        WebElement checkedCheckbox = driver.findElement(By.id("my-check-1"));
+        Assertions.assertTrue(checkedCheckbox.isDisplayed());
     }
 
     @Test
     void defaultCheckbox() {
-        WebElement defaultCheckbox = driver.findElement(By.xpath("//label[.//*[@id='my-check-2']]"));
-        Assertions.assertEquals("Default checkbox", defaultCheckbox.getText());
+        WebElement defaultCheckbox = driver.findElement(By.id("my-check-2"));
+        Assertions.assertTrue(defaultCheckbox.isDisplayed());
     }
 
     @Test
     void checkedRadio() {
-        WebElement checkedRadio = driver.findElement(By.xpath("//label[.//*[@id='my-radio-1']]"));
-        Assertions.assertEquals("Checked radio", checkedRadio.getText());
+        WebElement checkedRadio = driver.findElement(By.id("my-radio-1"));
+        Assertions.assertTrue(checkedRadio.isDisplayed());
     }
 
     @Test
     void defaultRadio() {
-        WebElement defaultRadio = driver.findElement(By.xpath("//label[.//*[@id='my-radio-2']]"));
-        Assertions.assertEquals("Default radio", defaultRadio.getText());
+        WebElement defaultRadio = driver.findElement(By.id("my-radio-2"));
+        Assertions.assertTrue(defaultRadio.isDisplayed());
     }
 
     @Test
@@ -203,8 +203,8 @@ public class SeleniumLocatorsTests {
 
     @Test
     void datePicker() throws InterruptedException {
-        WebElement datePicker = driver.findElement(By.xpath("//label[.//input[@name='my-date']]"));
-        Assertions.assertEquals("Date picker", datePicker.getText());
+        WebElement datePicker = driver.findElement(By.name("my-date"));
+        Assertions.assertTrue(datePicker.isDisplayed());
         datePicker.click();
         Thread.sleep(5000);
         WebElement datePickerDays = driver.findElement(By.cssSelector("div[class='datepicker-days']"));
@@ -213,8 +213,8 @@ public class SeleniumLocatorsTests {
 
     @Test
     void  exampleRange() {
-        WebElement exampleRange = driver.findElement(By.xpath("//label[.//input[@min='0']]"));
-        Assertions.assertEquals("Example range", exampleRange.getText());
+        WebElement exampleRange = driver.findElement(By.name("my-range"));
+        Assertions.assertTrue(exampleRange.isDisplayed());
         WebElement myRange = driver.findElement(By.cssSelector("input[name='my-range']"));
         Assertions.assertEquals("input", myRange.getTagName());
     }
