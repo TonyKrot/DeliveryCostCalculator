@@ -16,6 +16,7 @@ dependencies {
     testImplementation ("io.qameta.allure:allure-testng:2.14.0")
     implementation ("org.seleniumhq.selenium:selenium-java:4.18.1")
     testImplementation ("org.assertj:assertj-core:3.25.3")
+    testImplementation("io.github.bonigarcia:selenium-jupiter:5.1.0")
     }
 
 tasks.test {
