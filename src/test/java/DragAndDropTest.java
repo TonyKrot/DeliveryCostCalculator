@@ -25,6 +25,5 @@ public class DragAndDropTest {
         assertEquals(303, elementToCheck.getLocation().getY());
 
         driver.close();
-
     }
 }
