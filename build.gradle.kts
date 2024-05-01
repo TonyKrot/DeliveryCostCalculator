@@ -19,6 +19,16 @@ dependencies {
     testImplementation("io.github.bonigarcia:selenium-jupiter:5.1.0")
     implementation ("org.apache.httpcomponents.client5:httpclient5:5.3.1")
     testImplementation ("io.rest-assured:rest-assured:5.4.0")
+    implementation ("com.fasterxml.jackson.core:jackson-databind:2.17.0")
+    implementation ("io.rest-assured:json-schema-validator:5.4.0")
+    implementation ("io.qameta.allure:allure-rest-assured:2.27.0")
+    compileOnly ("org.projectlombok:lombok:1.18.32")
+    annotationProcessor ("org.projectlombok:lombok:1.18.32")
+    testCompileOnly ("org.projectlombok:lombok:1.18.32")
+    testAnnotationProcessor ("org.projectlombok:lombok:1.18.32")
+    implementation ("commons-io:commons-io:2.16.0")
+    testImplementation ("org.junit.jupiter:junit-jupiter:5.9.1")
+    implementation ("org.junit.jupiter:junit-jupiter-api:5.9.1")
     }
 
 tasks.test {

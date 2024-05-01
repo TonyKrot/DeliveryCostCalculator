@@ -1,16 +1,16 @@
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import models.Order;
+import models.Pet;
 import models.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.equalToIgnoringCase;
-import static org.hamcrest.Matchers.matchesPattern;
-import static org.hamcrest.Matchers.startsWith;
+import static io.restassured.RestAssured.when;
+import static org.hamcrest.Matchers.*;
 
 class SimpleApiTests {
 
@@ -23,7 +23,121 @@ class SimpleApiTests {
     public void tearDown() {
         RestAssured.reset();
     }
+// Pet Endpoint Tests
+    @Test
+    public void testPostCreatePet() {
+        Pet pet = new Pet();
+        pet.setId(123L);
+        pet.setName("doggie");
+        pet.setStatus("available");
 
+        given()
+                .contentType(ContentType.JSON)
+                .body(pet)
+                .when()
+                .post("/pet")
+                .then()
+                .statusCode(200)
+                .body("name", equalTo("doggie"));
+    }
+
+    @Test
+    public void testGetPetById() {
+        given()
+                .pathParam("petId", 123)
+                .when()
+                .get("/pet/{petId}")
+                .then().log().all()
+                .statusCode(200)
+                .body("id", equalTo(123));
+    }
+
+    @Test
+    public void testGetPetsByStatus() {
+        given()
+                .param("status", "available")
+                .when()
+                .get("/pet/findByStatus")
+                .then()
+                .statusCode(200)
+                .body("size()", greaterThan(0));
+    }
+
+    @Test
+    public void testUpdatePet() {
+        Pet pet = new Pet();
+        pet.setId(123);
+        pet.setName("new doggie");
+        pet.setStatus("available");
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(pet)
+                .when()
+                .put("/pet")
+                .then().log().all()
+                .statusCode(200)
+                .body("name", equalTo("new doggie"));
+    }
+
+    @Test
+    public void testDeletePet() {
+        given()
+                .pathParam("petId", 123)
+                .when()
+                .delete("/pet/{petId}")
+                .then()
+                .statusCode(200);
+    }
+// Store Endpoint Tests
+    @Test
+    public void testGetInventory() {
+        when()
+                .get("/store/inventory")
+                .then()
+                .statusCode(200)
+                .body("size()", greaterThan(0));
+    }
+
+    @Test
+    public void testPlaceOrder() {
+        Order order = new Order();
+        order.setId(100);
+        order.setPetId(123);
+        order.setStatus("placed");
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(order)
+                .when()
+                .post("/store/order")
+                .then().log().all()
+                .statusCode(200)
+                .body("petId", equalTo(123));
+    }
+
+    @Test
+    public void testGetOrderById() {
+        given()
+                .pathParam("orderId", 100)
+                .when()
+                .get("/store/order/{orderId}")
+                .then()
+                .statusCode(200)
+                .body("id", equalTo(100));
+    }
+
+    @Test
+    public void testDeleteOrder() {
+        given()
+                .pathParam("orderId", 100)
+                .when()
+                .delete("/store/order/{orderId}")
+                .then()
+                .statusCode(200);
+    }
+
+// User Endpoint Tests
     @Test
     void testPostCreateUser() {
         User user = new User(0, "FPMI_test_user5", "firstName5", "lastName5", "email3@gmail.com", "qwe123",
@@ -59,7 +173,7 @@ class SimpleApiTests {
 
     @Test
     public void testGetUserByUsername() {
-        String username = "FPMI_test_user777";
+        String username = "FPMI_test_user5";
 
         Response response = given()
                 .pathParam("username", username)
