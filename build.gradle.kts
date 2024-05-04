@@ -29,7 +29,7 @@ dependencies {
     implementation ("commons-io:commons-io:2.16.0")
     testImplementation ("org.junit.jupiter:junit-jupiter:5.9.1")
     implementation ("org.junit.jupiter:junit-jupiter-api:5.9.1")
-    }
+}
 
 tasks.test {
     useJUnitPlatform()
