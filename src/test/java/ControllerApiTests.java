@@ -104,6 +104,6 @@ public class ControllerApiTests {
     public void testDeleteUserNotFound() {
         String username = "userName404";
         Response response = userController.deleteUser(username);
-        response.then().statusCode(404);
+        response.then().log().all().statusCode(404);
     }
 }
