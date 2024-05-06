@@ -42,17 +42,14 @@ public class ControllerApiTests {
         String username = DEFAULT_USER.getUsername();
         Response response = userController.getUserByUsername(username);
         response.then().statusCode(200);
-        response.then().body("username", equalTo(username));
+        response.then().log().all().body("username", equalTo(username));
     }
 
     @Test
     @DisplayName("Update an existing user")
     @Tag("user put")
     public void testUpdateUser() {
-        User user = ApiTestData.DEFAULT_USER;
-        user.setFirstName("username404");
-        user.setEmail("123@gmail.com");
-        user.setPassword("pswtest");
+        User user = ApiTestData.DEFAULT_USER_BUILDER;
         Response response = userController.updateUser(user);
         response.then().statusCode(200);
 
