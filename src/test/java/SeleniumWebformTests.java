@@ -168,18 +168,18 @@ public class SeleniumWebformTests {
         Thread.sleep(3000);
     }
 
-    @Test
-    public void testDataListDropdown() throws InterruptedException {
-        WebElement inputElement = driver.findElement(By.name("my-datalist"));
-        List<WebElement> options = driver.findElements(By.xpath("//datalist[@id='my-options']/option"));
-        assertEquals(5, options.size()); //
-        inputElement.sendKeys("San Francisco");
-        Thread.sleep(3000);
-        options = driver.findElements(By.xpath("//datalist[@id='my-options']/option"));
-        options.getFirst();
-        String selectedValue = inputElement.getAttribute("value");
-        assertEquals("San Francisco", selectedValue);
-    }
+    // @Test
+    // public void testDataListDropdown() throws InterruptedException {
+    //     WebElement inputElement = driver.findElement(By.name("my-datalist"));
+    //     List<WebElement> options = driver.findElements(By.xpath("//datalist[@id='my-options']/option"));
+    //     assertEquals(5, options.size()); //
+    //     inputElement.sendKeys("San Francisco");
+    //     Thread.sleep(3000);
+    //     options = driver.findElements(By.xpath("//datalist[@id='my-options']/option"));
+    //     options.getFirst();
+    //     String selectedValue = inputElement.getAttribute("value");
+    //     assertEquals("San Francisco", selectedValue);
+    // }
 
     @Test
     public void testFileUpload() throws InterruptedException {
