@@ -15,6 +15,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static io.restassured.path.json.JsonPath.from;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 class ExtendedAPITests {
 
     @BeforeEach
