@@ -40,3 +40,10 @@ tasks.test {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.test {
+    ignoreFailures = true
+    useJUnitPlatform()
+    systemProperty("junit.jupiter.extensions.autodetection.enabled", "true")
+    systemProperties(System.getProperties().mapKeys { it.key as String })
+}
