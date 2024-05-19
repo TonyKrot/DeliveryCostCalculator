@@ -127,7 +127,7 @@ public class WebFormTest {
         inputElement.sendKeys("San Francisco");
         Thread.sleep(3000);
         options = driver.findElements(By.xpath("//datalist[@id='my-options']/option"));
-        options.getFirst();
+        options.get(0);
         String selectedValue = inputElement.getAttribute("value");
         assertEquals("San Francisco", selectedValue);
     }
