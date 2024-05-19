@@ -1,24 +1,32 @@
 import components.FooterComponent;
 import components.HeaderComponent;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.WebElement;
+import extensions.AllureExtension;
+import io.qameta.allure.Allure;
+import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import patterns.WebDriverFactory;
 import PageObject.WebFormPage;
-import org.openqa.selenium.WebDriver;
+import io.qameta.allure.Feature;
+import org.apache.commons.io.FileUtils;
 
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import steps.AllureSteps;
+import steps.BaseSteps;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Feature("Extensions")
 public class WebFormTest {
     WebDriver driver;
     WebFormPage webFormPage;

@@ -178,7 +178,7 @@ class ExtendedAPITests {
                 .header("Content-Type", "application/json")
                 .body(order)
                 .post("/store/order")
-                .then()
+                .then().log().all()
                 .statusCode(200)
                 .extract().response().asString();
 
