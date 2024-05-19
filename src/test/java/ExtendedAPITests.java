@@ -116,6 +116,7 @@ class ExtendedAPITests {
     @DisplayName("Find pets by status")
     @Tag("pet")
     void testFindPetsByStatus() {
+        @SuppressWarnings("unchecked")
         List<Pet> pets = given().
                 header("accept", "application/json").
                 queryParam("status", "available").
