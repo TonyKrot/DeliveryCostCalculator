@@ -119,18 +119,18 @@ public class WebFormTest {
         assertTrue(select.getFirstSelectedOption().isSelected());
     }
 
-    // @Test
-    // public void testDropdownDatalist() throws InterruptedException {
-    //     WebElement inputElement = webFormPage.getDropdownDatalist();
-    //     List<WebElement> options = driver.findElements(By.xpath("//datalist[@id='my-options']/option"));
-    //     assertEquals(5, options.size()); //
-    //     inputElement.sendKeys("San Francisco");
-    //     Thread.sleep(3000);
-    //     options = driver.findElements(By.xpath("//datalist[@id='my-options']/option"));
-    //     options.getFirst();
-    //     String selectedValue = inputElement.getAttribute("value");
-    //     assertEquals("San Francisco", selectedValue);
-    // }
+    @Test
+    public void testDropdownDatalist() throws InterruptedException {
+        WebElement inputElement = webFormPage.getDropdownDatalist();
+        List<WebElement> options = driver.findElements(By.xpath("//datalist[@id='my-options']/option"));
+        assertEquals(5, options.size()); //
+        inputElement.sendKeys("San Francisco");
+        Thread.sleep(3000);
+        options = driver.findElements(By.xpath("//datalist[@id='my-options']/option"));
+        options.getFirst();
+        String selectedValue = inputElement.getAttribute("value");
+        assertEquals("San Francisco", selectedValue);
+    }
 
     @Test
     public void testFileInput() throws InterruptedException {
